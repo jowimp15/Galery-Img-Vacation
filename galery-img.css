@@ -1,0 +1,231 @@
+:root {
+  --step--3: clamp(0.5788rem, 0.5574rem + 0.1065vw, 0.64rem);
+  --step--2: clamp(0.6944rem, 0.6576rem + 0.1837vw, 0.8rem);
+  --step--1: clamp(0.8331rem, 0.7751rem + 0.2902vw, 1rem);
+  --step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
+  --step-1: clamp(1.2rem, 1.0739rem + 0.6304vw, 1.5625rem);
+  --step-2: clamp(1.44rem, 1.2615rem + 0.8924vw, 1.9531rem);
+  --step-3: clamp(1.7281rem, 1.4801rem + 1.2402vw, 2.4413rem);
+  --step-4: clamp(2.0738rem, 1.7335rem + 1.7011vw, 3.0519rem);
+  --step-5: clamp(2.4881rem, 2.0266rem + 2.3076vw, 3.815rem);
+  --step-6: clamp(2.9863rem, 2.3665rem + 3.0989vw, 4.7681rem);
+  --step-7: clamp(3.5831rem, 2.7562rem + 4.1348vw, 5.9606rem);
+  --step-8: clamp(4.3rem, 3.2041rem + 5.4793vw, 7.4506rem);
+  --step-9: clamp(5.16rem, 3.7154rem + 7.2228vw, 9.3131rem);
+  --step-10: clamp(6.1919rem, 4.2964rem + 9.4772vw, 11.6413rem);
+
+  --color-text: #ffffff;
+}
+
+/*****************************************animation */
+
+@keyframes fetch-error-carousel {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/*****************************************resets */
+
+h1,
+h2 {
+  font-family: "Dancing Script", cursive;
+}
+/***************************************** style */
+html {
+  color: var(--color-text);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+body {
+  background-image: linear-gradient(180deg, #0000005d 0%, #000000e3 100%),
+    url(assets/img/background-adventure-img.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+/***************************************** header */
+
+header {
+  padding: 5rem 0;
+}
+.principal-title {
+  margin: 0;
+  text-align: center;
+  font-size: var(--step-7);
+}
+.description {
+  font-size: var(--step-3);
+  text-align: center;
+  margin: 0;
+}
+
+/***************************************** main */
+
+.galery {
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+}
+.container-galeryCard {
+  width: 60vw;
+  height: 50vh;
+}
+
+/***************************************** cards */
+
+.container-galeryCard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+  justify-items: center;
+  overflow: auto;
+}
+.container-galeryCard::-webkit-scrollbar {
+  background-color: transparent;
+}
+.container-galeryCard::-webkit-scrollbar-thumb {
+  background-color: var(--color-opacity);
+  border-radius: 20px;
+}
+.galery-card {
+  position: relative;
+
+  margin: 1rem;
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.img-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 20rem;
+  height: 20rem;
+
+  object-fit: cover;
+}
+.title-card {
+  position: relative;
+  z-index: 200;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: var(--step-3);
+
+  background: #0000009d;
+  background: linear-gradient(180deg, #ffffff00 20%, #000000 100%);
+  cursor: pointer;
+  transition: transform 1s ease, box-shadow 0.5s ease;
+}
+.galery-card:hover {
+  box-shadow: 0px 0px 20px 10px #bebebe;
+  transition: box-shadow 0.5s ease;
+}
+.galery-card:hover > .title-card {
+  text-shadow: 1px 1px 10px rgb(40, 205, 255);
+  transform: translateY(100%);
+  transition: transform 1s ease;
+}
+.errorFetch-carousel {
+  position: absolute;
+  top: 10rem;
+
+  width: 100vw;
+  text-align: center;
+  text-shadow: 1px 1px 10px red;
+  animation: fetch-error-carousel ease 1s forwards;
+  color: red;
+  font-size: var(--step-5);
+}
+
+/**************************** tablets */
+
+@media screen and (max-width: 1400px) {
+  header {
+    padding: 0;
+  }
+  .container-galeryCard {
+    width: 90vw;
+    height: 70vh;
+  }
+  .galery-card {
+    width: 15rem;
+    height: 15rem;
+  }
+  .container-galeryCard {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+}
+
+/**************************** landscape*/
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  body {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+  }
+  header {
+    width: 15rem;
+  }
+  .principal-title {
+    font-size: var(--step-3);
+  }
+  .description {
+    font-size: var(--step-2);
+  }
+  .container-galeryCard {
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    width: 60vw;
+  }
+  .galery-card {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+/**************************** movile*/
+
+@media screen and (max-width: 500px) {
+  body {
+    display: grid;
+    grid-template-rows: 30% 70%;
+    align-items: center;
+  }
+  .container-galeryCard {
+    width: 100vw;
+  }
+  .galery-card {
+    width: 10rem;
+    height: 10rem;
+  }
+  .container-galeryCard {
+    grid-template-columns: 50% 50%;
+    border-bottom: 2px solid var(--color-text);
+  }
+}
+@media screen and (max-width: 300px) {
+  .container-galeryCard {
+    grid-template-columns: 90%;
+  }
+}
